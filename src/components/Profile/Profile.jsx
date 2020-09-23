@@ -1,4 +1,5 @@
 import React from 'react';
+import Posts from './Posts/Posts';
 import './Profile.sass'
 
 const Profile = () => {
@@ -25,22 +26,7 @@ const Profile = () => {
         </ul>
       </div>
 
-      <div className="posts">
-        <form className="posts__form">
-          <textarea className="posts__form__area" placeholder="Write your new post" name="" id="" />
-          <button className="posts__form__button">Add post</button>
-        </form>
-
-        <h3><strong>Posts</strong></h3>
-
-        <div className="posts__card">
-          <p>Why nobody loves me?</p>
-        </div>
-
-        <div className="posts__card">
-          <p>Are you serious?</p>
-        </div>
-      </div>
+      <Posts />
     </section>
   )
 }

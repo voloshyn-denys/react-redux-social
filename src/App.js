@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.sass';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Sidebar from './components/Sidebar';
-import Profile from './components/Profile';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Sidebar from './components/Sidebar/Sidebar';
+import Profile from './components/Profile/Profile';
 
 const App = () => {
   return (
