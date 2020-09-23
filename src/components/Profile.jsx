@@ -1,9 +1,11 @@
 import React from 'react';
+import './Profile.sass'
 
 const Profile = () => {
   return (
     <section className="profile">
       <h1>Profile</h1>
+      
       <div className="profile__background">
         <img src="https://media-exp1.licdn.com/dms/image/C5616AQEaQ3o3EARftA/profile-displaybackgroundimage-shrink_200_800/0?e=1606348800&v=beta&t=MWeKs4hDLRlyDZw8UCBtMGTcQ7GO-bgK_OpB8yE0Omc" alt="Profile Background"/>
       </div>
@@ -24,7 +26,6 @@ const Profile = () => {
       </div>
 
       <div className="posts">
-
         <form className="posts__form">
           <textarea className="posts__form__area" placeholder="Write your new post" name="" id="" />
           <button className="posts__form__button">Add post</button>
@@ -39,7 +40,6 @@ const Profile = () => {
         <div className="posts__card">
           <p>Are you serious?</p>
         </div>
-
       </div>
     </section>
   )

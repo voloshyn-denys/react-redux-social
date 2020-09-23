@@ -1,20 +1,21 @@
 import React from 'react';
+import s from './Sidebar.module.sass'
 
 const Sidebar = () => {
   return (
-    <aside className="sidebar">
-      <ul className="sidebar__list">
-        <li className="sidebar__list__item">
-          <a className="sidebar__link sidebar__link--active" href="/profile">Profile</a> 
+    <aside className={s.sidebar}>
+      <ul className={s.list}>
+        <li className={s.item}>
+          <a className={`${s.link} ${s.active}`} href="/profile">Profile</a> 
         </li>
-        <li className="sidebar__list__item">
-          <a className="sidebar__link" href="/messages">Dialogs</a> 
+        <li className={s.item}>
+          <a className={s.link} href="/messages">Dialogs</a> 
         </li>
-        <li className="sidebar__list__item">
-          <a className="sidebar__link" href="/news">News</a> 
+        <li className={s.item}>
+          <a className={s.link} href="/news">News</a> 
         </li>
-        <li className="sidebar__list__item">
-          <a className="sidebar__link" href="/music">Music</a> 
+        <li className={s.item}>
+          <a className={s.link} href="/music">Music</a> 
         </li>
       </ul>
     </aside>
