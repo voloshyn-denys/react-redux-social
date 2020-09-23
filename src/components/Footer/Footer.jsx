@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className={s.footer}>
       Copyright © 2020 Denys Voloshyn
-      <span className="logo">SOCIAL</span>
+      <a href="/" className="logo">SOCIAL</a>
     </footer>
   )
 }

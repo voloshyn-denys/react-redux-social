@@ -4,7 +4,7 @@ import s from './Header.module.sass'
 const Header = () => {
   return (
     <header className={s.header}>
-      <span className="logo">SOCIAL</span>
+      <a href="/" className="logo">SOCIAL</a>
     </header>
   )
 }

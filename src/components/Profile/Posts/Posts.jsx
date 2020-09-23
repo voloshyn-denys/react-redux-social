@@ -11,8 +11,8 @@ const Posts = () => {
 
       <h3><strong>Posts</strong></h3>
 
-      <PostCard message='Why nobody loves me?' />
-      <PostCard message='Are you serious?' />
+      <PostCard message='Why nobody loves me?' likesCount="10" />
+      <PostCard message='Are you serious?' likesCount="23" />
     </div>
   )
 }

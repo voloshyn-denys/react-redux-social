@@ -9,7 +9,7 @@ const Sidebar = () => {
           <a className={`${s.link} ${s.active}`} href="/profile">Profile</a> 
         </li>
         <li className={s.item}>
-          <a className={s.link} href="/messages">Dialogs</a> 
+          <a className={s.link} href="/dialogs">Dialogs</a> 
         </li>
         <li className={s.item}>
           <a className={s.link} href="/news">News</a> 
