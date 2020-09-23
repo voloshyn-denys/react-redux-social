@@ -14,9 +14,9 @@ const state = {
       { id: 3, name: "Iryna" }
     ],
     messages: [
-      { id: 1, message: "Hi!" },
-      { id: 2, message: "How are you?" },
-      { id: 3, message: "Everything is alright. Thanks!" }
+      { id: 1, message: "Hi!", userId: 0 },
+      { id: 2, message: "How are you?", userId: 0 },
+      { id: 3, message: "Everything is alright. Thanks!", userId: 1 }
     ],
   }
 };
@@ -26,6 +26,15 @@ export const addPost = (postMessage) => {
     id: state.profilePage.posts.length + 1, 
     message: postMessage, 
     likesCount: 0
+  })
+  renderEntireTree();
+}
+
+export const addMessage = (newMessage) => {
+  state.dialogsPage.messages.push({ 
+    id: 1, 
+    message: newMessage, 
+    userId: 0
   })
   renderEntireTree();
 }

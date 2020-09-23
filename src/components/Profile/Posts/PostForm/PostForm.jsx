@@ -16,7 +16,7 @@ const PostForm = ({addPost}) => {
     <div className={s.form}>
       <textarea
         ref={textareaElement}
-        className={s.textarea} 
+        className='textarea' 
         placeholder="Write your new post"  
       />
       <button onClick={ handleButtonClick } className='button'>Add post</button>

@@ -2,14 +2,16 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import s from './Dialogs.module.sass'
+import DialogForm from './DialogForm/DialogForm';
 
-const Dialogs = ({ dialogs, messages }) => {
+const Dialogs = ({ dialogs, messages, addMessage }) => {
+  const emptyMessage = 'There are no messages!'
 
   const dialogsElements = dialogs
-    .map(({id, name}) => <DialogItem key={id} {...{name, id}} />)
+    .map(({ id, name }) => <DialogItem key={id} id={id} name={name}/>)
   
   const messagesElements = messages
-    .map(({id, message}) => <Message key={id} {...{message}} />)
+    .map(({ id, message, userId }) => <Message key={id} message={message} userId={userId} />)
 
   return (
     <section>
@@ -21,7 +23,8 @@ const Dialogs = ({ dialogs, messages }) => {
           </ul>
         </div>
         <div className={s.messages}>
-          { messagesElements }
+          { messagesElements.length ? messagesElements : emptyMessage }
+          <DialogForm addMessage={addMessage} />
         </div>
       </div>
     </section>
