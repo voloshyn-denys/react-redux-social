@@ -1,2 +1,39 @@
+.container
+  display: flex
+
 .dialogs
-  font-size: 16px
+  flex: none
+  width: 200px
+  
+  &_list
+    list-style-type: none
+    padding: 0
+    margin: 0
+
+    .item
+      padding: 5px 0
+
+    .link
+      transition: all .3s
+      &.active
+        font-weight: bold
+        padding-left: 10px
+
+.messages
+  flex: 1
+  border-left: 1px dashed #eee
+  padding-left: 20px
+
+.message
+
+  &:not(:last-child)
+    margin-bottom: 20px
+
+  &.right
+    text-align: right
+    
+  .text
+    display: inline-block
+    box-shadow: 0 0 6px #cecece
+    border-radius: 10px
+    padding: 10px 20px

@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './Header.module.sass'
 
 const Header = () => {
   return (
     <header className={s.header}>
-      <a href="/" className="logo">SOCIAL</a>
+      <NavLink to="/" className="logo">SOCIAL</NavLink>
     </header>
   )
 }

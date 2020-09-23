@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -14,6 +14,9 @@ const App = () => {
         <Header />
         <Sidebar />
         <main className="content">
+          <Route exact path="/">
+            <Redirect to="/profile" />
+          </Route>
           <Route path="/dialogs" component={Dialogs} />
           <Route path="/profile" component={Profile} />
         </main>
