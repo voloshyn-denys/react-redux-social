@@ -7,7 +7,7 @@ import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
-const App = () => {
+const App = ({dialogsPage, profilePage, addPost}) => {
   return (
     <BrowserRouter>
       <div className="app-content">
@@ -17,8 +17,8 @@ const App = () => {
           <Route exact path="/">
             <Redirect to="/profile" />
           </Route>
-          <Route path="/dialogs" component={Dialogs} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/dialogs" render={() => <Dialogs {...dialogsPage} /> } />
+          <Route path="/profile" render={() => <Profile {...profilePage} addPost={addPost} /> } />
         </main>
         <Footer />
       </div>

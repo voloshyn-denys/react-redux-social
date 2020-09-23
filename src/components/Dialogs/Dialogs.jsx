@@ -3,19 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import s from './Dialogs.module.sass'
 
-const Dialogs = () => {
-
-  const dialogs = [
-    { id: 1, name: "Denys" },
-    { id: 2, name: "Yana" },
-    { id: 3, name: "Iryna" }
-  ]
-
-  const messages = [
-    { id: 1, message: "Hi!" },
-    { id: 2, message: "How are you?" },
-    { id: 3, message: "Everything is alright. Thanks!" }
-  ]
+const Dialogs = ({ dialogs, messages }) => {
 
   const dialogsElements = dialogs
     .map(({id, name}) => <DialogItem key={id} {...{name, id}} />)

@@ -3,12 +3,12 @@ import Posts from './Posts/Posts';
 import s from './Profile.module.sass'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = () => {
+const Profile = ({ posts, addPost }) => {
   return (
     <section className={s.profile}>
       <h1>Profile</h1>
       <ProfileInfo />
-      <Posts />
+      <Posts {...{ posts, addPost }} />
     </section>
   )
 }

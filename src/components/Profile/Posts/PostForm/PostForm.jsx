@@ -1,12 +1,26 @@
 import React from 'react';
 import s from './PostForm.module.sass';
 
-const PostForm = () => {
+const PostForm = ({addPost}) => {
+
+  const textareaElement = React.createRef();
+
+  const handleButtonClick = () => {
+    const postMessage = textareaElement.current.value;
+    addPost(postMessage);
+
+    textareaElement.current.value = '';
+  }
+
   return (
-    <form className={s.form}>
-      <textarea className={s.textarea} placeholder="Write your new post" name="" id="" />
-      <button className='button'>Add post</button>
-    </form>
+    <div className={s.form}>
+      <textarea
+        ref={textareaElement}
+        className={s.textarea} 
+        placeholder="Write your new post"  
+      />
+      <button onClick={ handleButtonClick } className='button'>Add post</button>
+    </div>
   )
 }
 
