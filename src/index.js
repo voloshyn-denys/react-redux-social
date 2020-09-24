@@ -4,13 +4,14 @@ import './index.sass';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from "./redux/store";
+import { Provider } from 'react-redux';
 
 const renderEntireTree = () => {
-  const state = store.getState();
-
   ReactDOM.render(
     <React.StrictMode>
-      <App state={ state } store={ store } />
+      <Provider store={ store }>
+        <App />
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );

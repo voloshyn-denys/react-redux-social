@@ -4,13 +4,10 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-const App = (props) => {
-  const store = props.store;
-  const { dialogsPage, profilePage } = props.state;
-
+const App = () => {
   return (
     <BrowserRouter>
       <div className="app-content">
@@ -20,8 +17,8 @@ const App = (props) => {
           <Route exact path="/">
             <Redirect to="/profile" />
           </Route>
-          <Route path="/dialogs" render={() => <Dialogs state={dialogsPage} store={store} /> } />
-          <Route path="/profile" render={() => <Profile state={profilePage} store={store} /> } />
+          <Route path="/dialogs" render={() => <DialogsContainer /> } />
+          <Route path="/profile" render={() => <Profile /> } />
         </main>
         <Footer />
       </div>

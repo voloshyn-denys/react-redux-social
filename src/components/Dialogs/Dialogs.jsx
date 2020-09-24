@@ -2,11 +2,9 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import s from './Dialogs.module.sass';
-import DialogFormContainer from './DialogForm/DialogFormContainer';
+import DialogForm from './DialogForm/DialogForm';
 
-const Dialogs = ({ state, store }) => {
-  const { dialogs, messages } = state;
-  
+const Dialogs = ({ dialogs, messages, addMessage }) => {
   const emptyMessage = 'There are no messages!'
 
   const dialogsElements = dialogs
@@ -26,7 +24,7 @@ const Dialogs = ({ state, store }) => {
         </div>
         <div className={s.messages}>
           { messagesElements.length ? messagesElements : emptyMessage }
-          <DialogFormContainer store={store} />
+          <DialogForm addMessage={addMessage} />
         </div>
       </div>
     </section>
