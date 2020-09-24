@@ -1,11 +1,14 @@
 import React from 'react'
+import { addMessageActionCreator } from '../../../redux/dialogsReducer';
 
-const DialogForm = ({addMessage}) => {
+const DialogForm = ({dispatch}) => {
   const textareaElement = React.createRef();
 
   const handleButtonClick = () => {
     const message = textareaElement.current.value;
-    addMessage(message);
+    const action = addMessageActionCreator(message);
+    
+    dispatch(action);
     textareaElement.current.value = '';
   } 
 

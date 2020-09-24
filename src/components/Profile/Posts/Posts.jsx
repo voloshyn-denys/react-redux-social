@@ -4,13 +4,13 @@ import s from './Posts.module.sass'
 import PostCard from './PostCard/PostCard';
 import PostForm from './PostForm/PostForm';
 
-const Posts = ({ posts, addPost }) => {
+const Posts = ({ posts, dispatch }) => {
   const postsElements = posts
     .map(({id, likesCount, message}) => <PostCard key={id} {...{ message, likesCount }} />);
 
   return (
     <div className={s.posts}>
-      <PostForm addPost={ addPost }/>
+      <PostForm dispatch={ dispatch }/>
       <h3><strong>Posts</strong></h3>
 
       { postsElements }

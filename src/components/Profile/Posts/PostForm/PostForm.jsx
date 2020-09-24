@@ -1,14 +1,16 @@
 import React from 'react';
+import { addPostActionCreator } from '../../../../redux/profileReducer';
 import s from './PostForm.module.sass';
 
-const PostForm = ({addPost}) => {
+const PostForm = ({ dispatch }) => {
 
   const textareaElement = React.createRef();
 
   const handleButtonClick = () => {
-    const postMessage = textareaElement.current.value;
-    addPost(postMessage);
-
+    const message = textareaElement.current.value;
+    const action = addPostActionCreator(message);
+    
+    dispatch(action);
     textareaElement.current.value = '';
   }
 

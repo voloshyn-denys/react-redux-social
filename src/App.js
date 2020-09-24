@@ -7,7 +7,10 @@ import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
-const App = ({dialogsPage, profilePage, addPost, addMessage}) => {
+const App = (props) => {
+  const store = props.store;
+  const {dialogsPage, profilePage} = props.state;
+
   return (
     <BrowserRouter>
       <div className="app-content">
@@ -17,8 +20,8 @@ const App = ({dialogsPage, profilePage, addPost, addMessage}) => {
           <Route exact path="/">
             <Redirect to="/profile" />
           </Route>
-          <Route path="/dialogs" render={() => <Dialogs {...dialogsPage} addMessage={addMessage} /> } />
-          <Route path="/profile" render={() => <Profile {...profilePage} addPost={addPost} /> } />
+          <Route path="/dialogs" render={() => <Dialogs {...dialogsPage} dispatch={ action => { store.dispatch(action) }} /> } />
+          <Route path="/profile" render={() => <Profile {...profilePage} dispatch={ action => { store.dispatch(action) }} /> } />
         </main>
         <Footer />
       </div>

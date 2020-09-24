@@ -4,7 +4,7 @@ import Message from './Message/Message';
 import s from './Dialogs.module.sass'
 import DialogForm from './DialogForm/DialogForm';
 
-const Dialogs = ({ dialogs, messages, addMessage }) => {
+const Dialogs = ({ dialogs, messages, dispatch }) => {
   const emptyMessage = 'There are no messages!'
 
   const dialogsElements = dialogs
@@ -24,7 +24,7 @@ const Dialogs = ({ dialogs, messages, addMessage }) => {
         </div>
         <div className={s.messages}>
           { messagesElements.length ? messagesElements : emptyMessage }
-          <DialogForm addMessage={addMessage} />
+          <DialogForm dispatch={dispatch} />
         </div>
       </div>
     </section>
