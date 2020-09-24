@@ -2,15 +2,17 @@ import React from 'react';
 import s from './Posts.module.sass'
 
 import PostCard from './PostCard/PostCard';
-import PostForm from './PostForm/PostForm';
+import PostFormContainer from './PostForm/PostFormContainer';
 
-const Posts = ({ posts, dispatch }) => {
+const Posts = ({state, store}) => {
+  const { posts } = state;
+
   const postsElements = posts
     .map(({id, likesCount, message}) => <PostCard key={id} {...{ message, likesCount }} />);
 
   return (
     <div className={s.posts}>
-      <PostForm dispatch={ dispatch }/>
+      <PostFormContainer store={store} />
       <h3><strong>Posts</strong></h3>
 
       { postsElements }

@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 const App = (props) => {
   const store = props.store;
-  const {dialogsPage, profilePage} = props.state;
+  const { dialogsPage, profilePage } = props.state;
 
   return (
     <BrowserRouter>
@@ -20,8 +20,8 @@ const App = (props) => {
           <Route exact path="/">
             <Redirect to="/profile" />
           </Route>
-          <Route path="/dialogs" render={() => <Dialogs {...dialogsPage} dispatch={ action => { store.dispatch(action) }} /> } />
-          <Route path="/profile" render={() => <Profile {...profilePage} dispatch={ action => { store.dispatch(action) }} /> } />
+          <Route path="/dialogs" render={() => <Dialogs state={dialogsPage} store={store} /> } />
+          <Route path="/profile" render={() => <Profile state={profilePage} store={store} /> } />
         </main>
         <Footer />
       </div>
