@@ -3,9 +3,6 @@ import { addPostActionCreator } from '../../../redux/profileReducer';
 import Posts from './Posts';
 
 const mapStateToProps = (state) => {
-
-  console.log(state);
-
   return {
     posts: state.profilePage.posts
   }
