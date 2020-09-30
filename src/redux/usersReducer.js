@@ -1,29 +1,13 @@
 const TOGGLE_FOLLOW_USER = 'TOGGLE_FOLLOW_USER';
+const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE= 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS= 'SET_TOTAL_USERS';
 
 const initialState = {
-    users: [
-        {
-            id: 1,
-            name: "Dmitry",
-            description: "I'm looking for a job",
-            location: {
-                country: "Ukraine",
-                city: "Vinnytsia",
-            },
-            followed: false
-        },
-        {
-            id: 2,
-            name: "Ihor",
-            description: "Yo!",
-
-            location: {
-                country: "Ukraine",
-                city: "Kyiv",
-            },
-            followed: true
-        }
-    ]
+    users: [],
+    currentPage: 1,
+    totalUsers: null,
+    pageCount: 5
 }
 
 const usersReducers = (state = initialState, action) => {
@@ -38,13 +22,42 @@ const usersReducers = (state = initialState, action) => {
                     return user;
                 })
             };
+        case SET_USERS:
+            return {
+                ...state,
+                users: action.users
+            }
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.page
+            }
+        case SET_TOTAL_USERS:
+            return {
+                ...state,
+                totalUsers: action.totalUsers
+            }
+
         default:
             return state;
     }
 }
 
-export const followUserCreator = (userId) => {
+export const toggleFollowStatus = (userId) => {
     return { type: TOGGLE_FOLLOW_USER, userId }
+}
+
+export const setUsers = (users) => {
+    return { type: SET_USERS, users }
+}
+
+export const setCurrentPage = (page) => {
+    return { type: SET_CURRENT_PAGE, page }
+}
+
+export const setTotalUsers = (totalUsers) => {
+    return { type: SET_TOTAL_USERS, totalUsers }
 }
 
 export default usersReducers;
