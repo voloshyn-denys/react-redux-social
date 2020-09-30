@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { authAPI } from "../../api/api";
 import Header from './Header';
-import { setUserData } from '../../redux/authReducer'
+import { getAuthMe } from '../../redux/authReducer'
 
 class HeaderContainer extends Component {
   componentDidMount() {
-    const { setUserData } = this.props;
-
-    authAPI.getAuthMe()
-      .then(data => {
-        const { id, email, login } = data.data;
-        setUserData(id, login, email)
-      })
+    this.props.getAuthMe()
   }
   render() {
     return <Header {...this.props} />
@@ -20,9 +13,10 @@ class HeaderContainer extends Component {
 }
 
 const mapSateToProps = (state) => {  
-  return { isAuth: state.auth.isAuth }
+  return { 
+    isAuth: state.auth.isAuth, 
+    login: state.auth.login
+  }
 }
 
-export default connect(mapSateToProps, {
-  setUserData
-})(HeaderContainer)
+export default connect(mapSateToProps, { getAuthMe })(HeaderContainer)

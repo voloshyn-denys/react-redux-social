@@ -4,7 +4,7 @@ import PostsContainer from './Posts/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = ({ profile }) => {
-  if (!profile) return <div>"LOADING..."</div>
+  if (!profile) return <div>LOADING...</div>
   
   return (
     <section className={s.profile}>

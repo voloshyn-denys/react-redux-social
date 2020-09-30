@@ -48,7 +48,7 @@ const usersReducers = (state = initialState, action) => {
                 ...state,
                 followInProgress: action.followMode
                     ? [...state.followInProgress, action.userId]
-                    : state.followInProgress.filter(element => element != action.userId)
+                    : state.followInProgress.filter(element => element !== action.userId)
             }
 
         default:
@@ -56,23 +56,23 @@ const usersReducers = (state = initialState, action) => {
     }
 }
 
-export const toggleFollowAC = (userId) => {
+const toggleFollowAC = (userId) => {
     return { type: TOGGLE_FOLLOW_USER, userId }
 }
 
-export const setUsers = (users) => {
+const setUsers = (users) => {
     return { type: SET_USERS, users }
 }
 
-export const setCurrentPage = (page) => {
+const setCurrentPage = (page) => {
     return { type: SET_CURRENT_PAGE, page }
 }
 
-export const setTotalUsers = (totalUsers) => {
+const setTotalUsers = (totalUsers) => {
     return { type: SET_TOTAL_USERS, totalUsers }
 }
 
-export const setFollowProgress = (followMode, userId) => {
+const setFollowProgress = (followMode, userId) => {
     return {type: SET_FOLLOW_PROGRESS, followMode, userId}
 }
 
@@ -97,6 +97,16 @@ export const unfollowUser = (userId) => {
                 dispatch(toggleFollowAC(userId))
             })
     }
+}
+
+export const getUsers = (currentPage, pageCount, page = 1) => (dispatch) => {
+    dispatch(setCurrentPage(page));
+    
+    usersAPI.getUsers(currentPage, pageCount)
+        .then(data => {
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsers(data.totalCount));
+        })
 }
 
 export default usersReducers;

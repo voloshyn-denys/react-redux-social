@@ -6,10 +6,10 @@ import usersReducers from "./usersReducer";
 import thunkMiddleware from 'redux-thunk';
 
 const reducers = combineReducers({
+  auth: authReducer,
   profilePage: profileReducer,
   dialogsPage: dialogsReducer,
-  usersPage: usersReducers,
-  auth: authReducer
+  usersPage: usersReducers
 })
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
