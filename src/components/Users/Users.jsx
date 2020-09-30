@@ -2,13 +2,15 @@ import React from 'react';
 import UserCard from './UserCard/UserCard';
 import s from './Users.module.sass';
 
-const Users = ({users, toggleFollowStatus, totalUsers, currentPage, onPageChanges, pageCount}) => {
+const Users = ({users, followUser, unfollowUser, totalUsers, currentPage, onPageChanges, pageCount, followInProgress}) => {
     const usersElements = 
         users.map(user => (
             <UserCard
                 key={user.id}
                 user={user} 
-                toggleFollowStatus={ toggleFollowStatus } 
+                followUser={followUser}
+                unfollowUser={unfollowUser}
+                followInProgress={followInProgress}
             />
         ));
 

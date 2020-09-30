@@ -7,13 +7,16 @@ const Sidebar = () => {
     <aside className={s.sidebar}>
       <ul className={s.list}>
         <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/profile/2">My Profile</NavLink> 
+          <NavLink className={s.link} activeClassName={s.active} to="/my-profile">My Profile</NavLink> 
         </li>
         <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/dialogs">Dialogs</NavLink> 
         </li>
         <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/users">Users</NavLink> 
+        </li>
+        <li className={s.item}>
+          <NavLink className={s.link} activeClassName={s.active} to="/settings">Settings</NavLink> 
         </li>
       </ul>
     </aside>

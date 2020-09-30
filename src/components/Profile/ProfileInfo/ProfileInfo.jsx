@@ -9,7 +9,7 @@ const ProfileInfo = ({ profile }) => {
       <img src="https://media-exp1.licdn.com/dms/image/C5616AQEaQ3o3EARftA/profile-displaybackgroundimage-shrink_200_800/0?e=1606348800&v=beta&t=MWeKs4hDLRlyDZw8UCBtMGTcQ7GO-bgK_OpB8yE0Omc" alt="Profile Background"/>
     </div>
     <div className={s.name}>
-      <img className={s.avatar} src={photos && photos.large ? photos.large : userSrc} alt="Photo" />
+      <img className={s.avatar} src={photos && photos.large ? photos.large : userSrc} alt="" />
       <div>
         <h2><strong>{fullName}</strong></h2>
         {aboutMe}

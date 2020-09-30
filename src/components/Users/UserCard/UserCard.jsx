@@ -3,9 +3,15 @@ import s from './UserCard.module.sass';
 import userSrc from '../../../assets/images/user.svg';
 import { NavLink } from 'react-router-dom';
 
-const UserCard = ({ user, toggleFollowStatus }) => {
+const UserCard = ({ user, unfollowUser, followUser, followInProgress }) => {
     const { id, name, status, followed, photos } = user;
+
     const followText = followed ? "Unfollow" : "Follow";
+
+    const handleButtonClick = (userId) => {
+        if (followed) { unfollowUser(userId) } 
+        else { followUser(userId) }
+    }
 
     return (
         <div className={s.user_card}>
@@ -16,9 +22,10 @@ const UserCard = ({ user, toggleFollowStatus }) => {
                 </NavLink>
                 { status ? <p>{ status }</p> : null }
             </div>
-            <button 
+            <button
+                disabled={followInProgress.some(element => element === id)}
                 className="button"
-                onClick={() => { toggleFollowStatus(id) }}
+                onClick={() => { handleButtonClick(id) }}
             >
                 { followText }
             </button>

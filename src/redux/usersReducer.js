@@ -1,13 +1,17 @@
+import { usersAPI } from "../api/api";
+
 const TOGGLE_FOLLOW_USER = 'TOGGLE_FOLLOW_USER';
 const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE= 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS= 'SET_TOTAL_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS = 'SET_TOTAL_USERS';
+const SET_FOLLOW_PROGRESS = 'SET_FOLLOW_PROGRESS';
 
 const initialState = {
     users: [],
     currentPage: 1,
     totalUsers: null,
-    pageCount: 5
+    pageCount: 5,
+    followInProgress: []
 }
 
 const usersReducers = (state = initialState, action) => {
@@ -39,12 +43,20 @@ const usersReducers = (state = initialState, action) => {
                 totalUsers: action.totalUsers
             }
 
+        case SET_FOLLOW_PROGRESS:
+            return {
+                ...state,
+                followInProgress: action.followMode
+                    ? [...state.followInProgress, action.userId]
+                    : state.followInProgress.filter(element => element != action.userId)
+            }
+
         default:
             return state;
     }
 }
 
-export const toggleFollowStatus = (userId) => {
+export const toggleFollowAC = (userId) => {
     return { type: TOGGLE_FOLLOW_USER, userId }
 }
 
@@ -58,6 +70,33 @@ export const setCurrentPage = (page) => {
 
 export const setTotalUsers = (totalUsers) => {
     return { type: SET_TOTAL_USERS, totalUsers }
+}
+
+export const setFollowProgress = (followMode, userId) => {
+    return {type: SET_FOLLOW_PROGRESS, followMode, userId}
+}
+
+export const followUser = (userId) => {
+    return (dispatch) => {
+        dispatch(setFollowProgress(true, userId))
+        usersAPI.follow(userId)
+            .then(() => {
+                dispatch(setFollowProgress(false, userId))
+                dispatch(toggleFollowAC(userId))
+            })
+    }
+}
+
+export const unfollowUser = (userId) => {
+    
+    return (dispatch) => {
+        dispatch(setFollowProgress(true, userId))
+        usersAPI.unfollow(userId)
+            .then(() => {
+                dispatch(setFollowProgress(false, userId))
+                dispatch(toggleFollowAC(userId))
+            })
+    }
 }
 
 export default usersReducers;

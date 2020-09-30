@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { UsersAPI } from '../../api/api';
-import { toggleFollowStatus, setCurrentPage, setTotalUsers, setUsers } from "../../redux/usersReducer";
+import { usersAPI } from '../../api/api';
+import { followUser, unfollowUser, setCurrentPage, setTotalUsers, setUsers } from "../../redux/usersReducer";
 import Users from "./Users";
 
 class UsersContainer extends Component {
     componentDidMount() {
         const { currentPage, pageCount } = this.props;
 
-        UsersAPI.getUsers(currentPage, pageCount)
+        usersAPI.getUsers(currentPage, pageCount)
             .then(data => {
                 this.props.setUsers(data.items);
                 this.props.setTotalUsers(data.totalCount);
@@ -19,7 +19,7 @@ class UsersContainer extends Component {
         const { pageCount, setCurrentPage, setUsers } = this.props;
 
         setCurrentPage(page);
-        UsersAPI.getUsers(page, pageCount)
+        usersAPI.getUsers(page, pageCount)
             .then(data => {
                 setUsers(data.items);
             })
@@ -35,12 +35,14 @@ const mapStateToProps = (state) => {
         users: state.usersPage.users,
         totalUsers: state.usersPage.totalUsers, 
         currentPage: state.usersPage.currentPage,
-        pageCount: state.usersPage.pageCount
+        pageCount: state.usersPage.pageCount,
+        followInProgress: state.usersPage.followInProgress
     })
 }
 
 export default connect(mapStateToProps, {
-    toggleFollowStatus,
+    followUser,
+    unfollowUser,
     setUsers,
     setTotalUsers,
     setCurrentPage
