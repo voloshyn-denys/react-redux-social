@@ -1,6 +1,8 @@
 const ADD_POST = 'ADD_POST';
+const SET_PROFILE = 'SET_PROFILE';
 
 const initialState = {
+  profile: null,
   posts: [
     { id: 1, message: "Why nobody loves me?", likesCount: 112 },
     { id: 2, message: "Are you serious?", likesCount: 38 },
@@ -21,6 +23,12 @@ const profileReducer = (state = initialState, action) => {
           }
         ] 
       }
+
+    case SET_PROFILE:
+      return {
+        ...state,
+        profile: action.profile
+      }
       
     default:
       return state;
@@ -29,5 +37,8 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = (postMessage) => 
   ({ type: ADD_POST, postMessage })
+
+export const setProfile = (profile) => 
+  ({ type: SET_PROFILE, profile })
 
 export default profileReducer;

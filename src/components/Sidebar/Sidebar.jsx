@@ -7,7 +7,7 @@ const Sidebar = () => {
     <aside className={s.sidebar}>
       <ul className={s.list}>
         <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/profile">Profile</NavLink> 
+          <NavLink className={s.link} activeClassName={s.active} to="/profile/2">My Profile</NavLink> 
         </li>
         <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/dialogs">Dialogs</NavLink> 
