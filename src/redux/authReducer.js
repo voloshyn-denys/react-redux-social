@@ -29,7 +29,7 @@ const setUserData = (userId, login, email) => {
 }
 
 export const getAuthMe = () => (dispatch) => {
-  authAPI.getAuthMe()
+  return authAPI.getAuthMe()
     .then(data => {
       const { id, email, login } = data.data;
       dispatch(setUserData(id, login, email))

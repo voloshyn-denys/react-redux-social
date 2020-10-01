@@ -6,7 +6,7 @@ import Profile from './Profile';
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    const userId = this.props.match.params.userId || 2;
+    const userId = this.props.match.params.userId || this.props.userId;
     this.props.getUserProfile(userId)
   }
 
