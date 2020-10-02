@@ -36,4 +36,18 @@ export const getAuthMe = () => (dispatch) => {
     })
 }
 
+export const loginUser = (payload) => (dispatch) => {
+  return authAPI.login(payload)
+    .then(() => {
+      dispatch(getAuthMe())
+    })
+}
+
+export const logoutUser = () => (dispatch) => {
+  return authAPI.loguot()
+    .then(() => {
+      dispatch(setUserData(null, null, null));
+    })
+}
+
 export default authReducer;

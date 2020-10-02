@@ -1,13 +1,16 @@
 import { connect } from "react-redux";
 import Login from "./Login";
 import React, { Component } from "react";
+import { loginUser } from "../../redux/authReducer";
+import { Redirect } from "react-router-dom";
 
-class LoginContainer extends Component {
-  render() {
-    return <Login {...this.props}  />
-  }
+const LoginContainer = (props) => {
+  return props.isAuth
+    ? <Redirect to="/profile"/> 
+    : <Login {...props}  />
 }
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+})
 
-const mapStateToProps = () => ({})
-
-export default connect(mapStateToProps, {})(LoginContainer)
+export default connect(mapStateToProps, { loginUser })(LoginContainer)
