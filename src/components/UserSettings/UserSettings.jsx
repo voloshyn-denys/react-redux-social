@@ -1,12 +1,38 @@
+import { useFormik } from 'formik';
 import React from 'react';
+import { connect } from 'react-redux';
+import { updatePhoto } from '../../redux/profileReducer';
 
-const UserSettings = () => {
+const UserSettings = ({updatePhoto}) => {
+  const formik = useFormik({
+    initialValues: {
+      image: null
+    },
+    onSubmit: values  => {
+      updatePhoto(values.image)
+    }
+  })
   return (
-    <div>
+    <form onSubmit={formik.handleSubmit}>
       <h2><b>Settings</b></h2>
-      <input type="file" />
-    </div>
+      <div>
+        <input 
+          type="file" 
+          name="image" 
+          id="image"
+          onChange={(evt) => {
+            formik.setFieldValue("image", evt.target.files[0]);
+          }} />
+      </div>
+
+      <br/> 
+      
+      
+      <button type='submit' className='button'>Save Settings</button>
+    </form>
   )
 }
 
-export default UserSettings;
+const mapStateToProps = (state) => ({ })
+
+export default connect(mapStateToProps, {updatePhoto})(UserSettings);

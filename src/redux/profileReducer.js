@@ -43,9 +43,14 @@ export const addPostActionCreator = (postMessage) =>
 const setProfile = (profile) => ({ type: SET_PROFILE, profile })
 
 export const getUserProfile = (userId) => (dispatch) => {
-  profileAPI.getProfile(userId).then(profile => {
+  profileAPI.getProfile(userId)
+    .then(profile => {
       dispatch(setProfile(profile))
     })
+}
+
+export const updatePhoto = (file) => () => {
+  profileAPI.updatePhoto(file)
 }
 
 export default profileReducer;

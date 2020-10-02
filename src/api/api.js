@@ -41,5 +41,13 @@ export const profileAPI = {
   getProfile: (userId) => {
     return instance.get(`profile/${userId}`)
       .then(response => (response.data))
+  },
+  updatePhoto: (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    
+    return instance.put(`/profile/photo`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
   }
 }
