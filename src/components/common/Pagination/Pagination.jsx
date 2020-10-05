@@ -10,24 +10,20 @@ const Pagination = ({totalItems, itemsCount, onChange, currentItem, itemsLength}
   }
 
   const rightSideItem = page * itemsLength;
-  const leftSideItem = (page * itemsLength) - itemsLength;
+  const leftSideItem = rightSideItem - itemsLength;
 
   const next = () => {
     const nextItem = currentItem + 1;
     onChange(nextItem);
 
-    if (nextItem > rightSideItem) {
-      setPage(page + 1)
-    }
+    if (nextItem > rightSideItem) setPage(page + 1);
   }
 
   const prev = () => {
     const prevItem = currentItem - 1;
     onChange(prevItem);
 
-    if (prevItem <= leftSideItem) {
-      setPage(page - 1)
-    }
+    if (prevItem <= leftSideItem) setPage(page - 1);
   }
 
 
