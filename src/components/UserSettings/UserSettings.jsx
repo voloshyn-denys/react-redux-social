@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { updatePhoto } from '../../redux/profileReducer';
 
 const UserSettings = ({updatePhoto}) => {
@@ -35,4 +37,7 @@ const UserSettings = ({updatePhoto}) => {
 
 const mapStateToProps = (state) => ({ })
 
-export default connect(mapStateToProps, {updatePhoto})(UserSettings);
+export default compose(
+  connect(mapStateToProps, {updatePhoto}),
+  withAuthRedirect
+)(UserSettings)
