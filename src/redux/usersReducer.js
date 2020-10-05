@@ -11,7 +11,8 @@ const initialState = {
     currentPage: 1,
     totalUsers: null,
     pageCount: 5,
-    followInProgress: []
+    followInProgress: [],
+    paginationLength: 10
 }
 
 const usersReducers = (state = initialState, action) => {

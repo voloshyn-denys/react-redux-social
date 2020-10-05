@@ -3,7 +3,7 @@ import Pagination from '../common/Pagination/Pagination';
 import UserCard from './UserCard/UserCard';
 import s from './Users.module.sass';
 
-const Users = ({users, followUser, unfollowUser, totalUsers, currentPage, onPageChanges, pageCount, followInProgress}) => {
+const Users = ({users, followUser, unfollowUser, totalUsers, currentPage, onPageChanges, pageCount, followInProgress, paginationLength}) => {
     const usersElements = 
         users.map(user => (
             <UserCard
@@ -27,7 +27,7 @@ const Users = ({users, followUser, unfollowUser, totalUsers, currentPage, onPage
             itemsCount={pageCount}
             currentItem={currentPage}
             onChange={onPageChanges}
-            itemsLength={6}
+            itemsLength={paginationLength}
         />
     </>
 }

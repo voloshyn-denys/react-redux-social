@@ -25,7 +25,8 @@ const mapStateToProps = (state) => {
         totalUsers: state.usersPage.totalUsers, 
         currentPage: state.usersPage.currentPage,
         pageCount: state.usersPage.pageCount,
-        followInProgress: state.usersPage.followInProgress
+        followInProgress: state.usersPage.followInProgress,
+        paginationLength: state.usersPage.paginationLength
     })
 }
 
