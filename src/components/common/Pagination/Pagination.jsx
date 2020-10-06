@@ -9,37 +9,29 @@ const Pagination = ({totalItems, itemsCount, onChange, currentItem, itemsLength}
     paginations.push(i);
   }
 
-  const rightSideItem = page * itemsLength;
-  const leftSideItem = rightSideItem - itemsLength;
+  const rightPageEnd = page * itemsLength;
+  const leftPageEnd = rightPageEnd - itemsLength;
 
-  const next = () => {
-    const nextItem = currentItem + 1;
+  const filteredPaginations = paginations
+    .filter(item => item <= rightPageEnd && item > leftPageEnd)
+
+  const selectNextItem = (nextItem, nextPage) => {
     onChange(nextItem);
-
-    if (nextItem > rightSideItem) setPage(page + 1);
+    if (!filteredPaginations.includes(nextItem)) setPage(nextPage);
   }
-
-  const prev = () => {
-    const prevItem = currentItem - 1;
-    onChange(prevItem);
-
-    if (prevItem <= leftSideItem) setPage(page - 1);
-  }
-
 
   return (
     <div className={s.pagination}>
-      
+       <button 
+        className='button'
+        disabled={currentItem === 1}
+        onClick={() => { selectNextItem(currentItem - 1, page - 1)}}>
+          Prev
+      </button>
+
       <ul className={s.pagination_list}>
         {
-          currentItem > 1
-            ? <li className={`${s.pagination_item}`} onClick={prev}><b>Prev</b></li>
-            : null
-        }
-        
-        {
-          paginations
-            .filter(item => item <= rightSideItem && item > leftSideItem)
+          filteredPaginations
             .map(item => {
               const active = currentItem === item;
               return (
@@ -51,14 +43,15 @@ const Pagination = ({totalItems, itemsCount, onChange, currentItem, itemsLength}
               )
             })
           }
-
-        {
-          currentItem < paginations.length
-            ? <li className={`${s.pagination_item}`} onClick={next}><b>Next</b></li>
-            : null
-        }
           
       </ul>
+
+      <button 
+        className='button'
+        disabled={currentItem === paginations.length}
+        onClick={() => { selectNextItem(currentItem + 1, page + 1) }}>
+          Next
+      </button>
     </div>
   )
 };
